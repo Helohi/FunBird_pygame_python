@@ -4,3 +4,4 @@ class Constants:
     FPS = 60
     SIZE_OF_BIRD = 30
     Points = 0
+    BACKGROUND_COLOR = (34, 40, 49,)
