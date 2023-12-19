@@ -1,6 +1,7 @@
 from enum import Enum
 from time import gmtime, time
 from typing import List
+from random import choice
 
 import pygame.event
 from pygame.time import Clock
@@ -8,7 +9,7 @@ from pygame.time import Clock
 from bird import Bird
 from black_statistics import Statistics
 from constants import Constants
-from hole import Hole
+from hole import Hole, HoleType
 from menu import Menu, MenuEnum
 
 
@@ -69,6 +70,8 @@ class RestartMenu:
 
 
 class GameRunning:
+    Hole_TYPE_CHANCE = [HoleType.Static] * 90 + [HoleType.Dynamic] * 10
+
     @staticmethod
     def run(screen: pygame.Surface, on: bool, statistics: Statistics, stopwatch, clock: Clock, bird: Bird,
             holes: List[Hole], *args, **kwargs) -> (bool, State,):
@@ -110,7 +113,7 @@ class GameRunning:
             last_hole = hole
 
         if last_hole and Constants.WINDOW_WIDTH - last_hole.pos[0] >= Hole.SPACE_BETWEEN:
-            holes.append(Hole())
+            holes.append(Hole(hole_type=choice(GameRunning.Hole_TYPE_CHANCE)))
 
         pygame.display.update()
 
