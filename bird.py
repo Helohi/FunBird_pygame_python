@@ -24,10 +24,12 @@ class Bird(GameObject):
         self.speed = 15
 
     def move(self):
-        self.position[1] = max(self.position[1] - self.speed, Constants.SIZE_OF_BIRD)
-        self.speed -= 1
+        self.position[1] = self.position[1] - self.speed
+        self.speed = max(self.speed - 1, Constants.MAX_GRAVITATION)
 
     def is_alive(self):
-        if self.position[1] > Constants.WINDOW_HEIGHT:
-            return False
+        if self.position[1] - self.size > Constants.WINDOW_HEIGHT:
+            self.position[1] = -self.size
+        elif self.position[1] + self.size < 0:
+            self.position[1] = Constants.WINDOW_HEIGHT + self.size
         return True
