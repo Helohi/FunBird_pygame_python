@@ -3,5 +3,6 @@ class Constants:
     WINDOW_HEIGHT = 800
     FPS = 60
     SIZE_OF_BIRD = 30
+    MAX_GRAVITATION = -100
     Points = 0
     BACKGROUND_COLOR = (34, 40, 49,)
