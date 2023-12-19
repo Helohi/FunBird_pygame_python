@@ -27,7 +27,7 @@ class StartMenu:
             if event.type == pygame.QUIT:
                 on = False
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_s:
+                if event.key == pygame.K_RETURN or event.key == pygame.K_s:
                     next_state = State.GameRunning
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if Menu.is_clicked(pygame.mouse.get_pos(), MenuEnum.START):
@@ -52,7 +52,7 @@ class RestartMenu:
             if event.type == pygame.QUIT:
                 on = False
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_s:
+                if event.key == pygame.K_RETURN or event.key == pygame.K_s:
                     next_state = State.GameRunning
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if Menu.is_clicked(pygame.mouse.get_pos(), MenuEnum.RESTART):
@@ -97,6 +97,7 @@ class GameRunning:
             if hole.is_valuable and hole.is_needed_to_check(bird):
                 if hole.is_bird_in(bird):
                     hole.is_valuable = False
+                    hole.color = (0, 173, 181)
                     bird.points += Hole.POINT_GIVEN
                 elif bird.position[0] - bird.size < hole.pos[0] + hole.size[0]:
                     pass
@@ -114,4 +115,3 @@ class GameRunning:
         pygame.display.update()
 
         return on, next_state
-
