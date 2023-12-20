@@ -3,6 +3,7 @@ from typing import List
 import pygame
 import time
 from constants import Constants
+from os.path import exists
 
 
 class Statistics:
@@ -43,7 +44,10 @@ class Statistics:
     @staticmethod
     def get_leaderboard() -> List:
         leaders = []
-        with open('leaderboard.dat') as file:
-            while (text := file.readline()) != '':
-                leaders.append(text.strip().split('|'))
+        if exists('leaderboard.dat'):
+            with open('leaderboard.dat') as file:
+                while (text := file.readline()) != '':
+                    leaders.append(text.strip().split('|'))
+        else:
+            leaders = [['Not', 'proved'], ['Not', 'autherized'], ['Stealed', 'from programmer']]
         return leaders
