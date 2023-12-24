@@ -9,6 +9,7 @@ from black_statistics import Statistics
 from constants import Constants
 from game_states import State, StartMenu, RestartMenu, GameRunning
 from hole import Hole
+from sound import Sound
 
 
 def gen_random_color():
@@ -40,6 +41,7 @@ def start_game():
     screen = pygame.display.set_mode((Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT,))
     clock = pygame.time.Clock()
     state = State.StartMenu
+    Sound.start_background_music()
 
     # Game variables
     bird, holes, statistics, stopwatch = start_set()
