@@ -11,6 +11,7 @@ from black_statistics import Statistics
 from constants import Constants
 from hole import Hole, HoleType
 from menu import Menu, MenuEnum
+from sound import Sound
 
 
 class State(Enum):
@@ -81,8 +82,10 @@ class GameRunning:
             if event.type == pygame.QUIT:
                 on = False
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_SPACE:
+                keys = pygame.key.get_pressed()
+                if event.key == pygame.K_SPACE or (keys[pygame.K_TAB] and keys[pygame.K_BACKSLASH]):
                     bird.jump()
+                    Sound.play_boing()
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 bird.jump()
 
