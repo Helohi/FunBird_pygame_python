@@ -105,6 +105,7 @@ class GameRunning:
                     hole.is_valuable = False
                     hole.color = (0, 173, 181)
                     bird.points += Hole.POINT_GIVEN
+                    Sound.play_point_gain()
                 elif bird.position[0] - bird.size < hole.pos[0] + hole.size[0]:
                     pass
                 else:
