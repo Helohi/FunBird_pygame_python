@@ -1,7 +1,7 @@
 import typing
 from random import randint
 from constants import Constants
-from pygame import Surface, draw, gfxdraw
+from pygame import Surface, gfxdraw
 from game_object import GameObject
 
 
