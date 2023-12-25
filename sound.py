@@ -4,13 +4,18 @@ import pygame
 class Sound:
     @staticmethod
     def play_boing():
-        return pygame.mixer.Sound('./assets/boing.wav').play()
+        sound = pygame.mixer.Sound('./assets/boing.wav')
+        sound.set_volume(1)
+        return sound.play()
 
     @staticmethod
     def play_point_gain():
-        return pygame.mixer.Sound('./assets/point.wav').play()
+        sound = pygame.mixer.Sound('./assets/point.wav')
+        sound.set_volume(1)
+        return sound.play()
 
     @staticmethod
     def start_background_music():
-        pygame.mixer.music.load('./assets/GameMusic.wav')
+        pygame.mixer.music.load('./assets/newMusic.wav')
+        pygame.mixer.music.set_volume(0.1)
         return pygame.mixer.music.play(-1)
