@@ -17,5 +17,6 @@ class Sound:
     @staticmethod
     def start_background_music():
         pygame.mixer.music.load('./assets/newMusic.wav')
+        pygame.mixer_music.queue('./assets/GameMusic.wav', loops=1)
         pygame.mixer.music.set_volume(0.1)
         return pygame.mixer.music.play(-1)
